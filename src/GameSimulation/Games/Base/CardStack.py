@@ -17,6 +17,9 @@ class CardStack:
     def __len__(self):
         return len(self.cards)
 
+    def __getitem__(self, i):
+        return self.cards[len(self)-1-i]
+
     def set_acceptance_rule(self, func):
         """
 

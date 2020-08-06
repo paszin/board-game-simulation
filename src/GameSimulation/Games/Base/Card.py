@@ -5,12 +5,14 @@ class Card:
         self.number = number
 
     def __str__(self):
-        return f"|{self.number}|"
+        return f"|{self.symbol or ''}{self.number}|"
 
     def __repr__(self):
-        return f"|{self.number}|"
+        return f"|{self.symbol or ''}{self.number}|"
 
     def __eq__(self, other):
+        if type(other) == int:
+            return self.number == other
         return self.symbol == other.symbol and self.number == other.number
 
     def __lt__(self, other):

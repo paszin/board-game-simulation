@@ -1,5 +1,5 @@
-import random
 import copy
+
 
 class Player:
     """
@@ -7,18 +7,14 @@ class Player:
     A player has a name, a hand and knowledge.
         name: Identifier of the instance
         hand: list of cards
-        knowledge: tbd
     A player can perform actions. Actions are:
         play:
         finish_turn:
-        ask:
-        reply:
     """
 
     def __init__(self, name=None):
         self.name = name
         self.hand = []
-        self.knowledge = None
 
     def __str__(self):
         return f"{self.name or 'Player'}: {' '.join(map(str, self.hand))}"
@@ -32,6 +28,19 @@ class Player:
         :return:
         """
         self.hand.append(card)
+
+    def drop(self, card):
+        """
+
+        :param card:
+        :return: removes card from hand
+        """
+        for c in self.hand:
+            if c == card:
+                self.hand.remove(c)
+                return True
+        return False
+
 
     def play(self, game):
         """
@@ -51,8 +60,8 @@ class Player:
                 # save this tuple as best fit for this stack
                 try:
                     best_fit_per_stack.append((i, *(min(map(lambda c: (abs(stack.last_card - c), c),
-                                                           filter(stack.accept, self.hand))) or 100))
-                    )
+                                                            filter(stack.accept, self.hand))) or 100))
+                                              )
                 except ValueError as err:
                     best_fit_per_stack.append((i, 100, None))
             stack_i, dist, choice = min(best_fit_per_stack, key=lambda iac: iac[1])
@@ -80,21 +89,4 @@ class Player:
 
         :return:
         """
-        game = copy.deepcopy(game)
-        while len(game.draw_pile) > 0 and len(self.hand) < game.cards_per_player:
-            self.receive(game.draw_pile.pop())
         return game
-
-    def ask(self):
-        """
-
-        :return:
-        """
-        pass
-
-    def reply(self):
-        """
-
-        :return:
-        """
-        pass

@@ -1,7 +1,3 @@
-from .Card import Card
-from .CardStack import CardStack
-from .Player import Player
-from .GameState import GameState
-from .Game import Game
+from src.GameSimulation.Games.Base.Player import Player
 
 __all__ = ["Card", "CardStack", "GameState", "Player", "Game"]
