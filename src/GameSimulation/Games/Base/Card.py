@@ -3,6 +3,7 @@ class Card:
     def __init__(self, symbol=None, number=None):
         self.symbol = symbol
         self.number = number
+        self.valid = True # some cards have an effect only once
 
     def __str__(self):
         return f"|{self.symbol or ''}{self.number}|"

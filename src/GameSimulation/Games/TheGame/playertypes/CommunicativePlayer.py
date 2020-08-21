@@ -2,4 +2,11 @@ from .BasicPlayer import Player as BasicPlayer
 
 
 class Player(BasicPlayer):
-    pass
+
+
+    def play(self, game):
+        """
+
+        :param game:
+        :return:
+        """

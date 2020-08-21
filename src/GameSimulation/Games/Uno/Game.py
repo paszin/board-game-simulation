@@ -13,9 +13,13 @@ class Game(BaseGame):
         """
         cards = []
         for color in ["red", "blue", "yellow", "green"]:
-            for n in range(1, 10):
+            cards.append(Card(number=0, symbol=color))
+            for n in list(range(1, 10)) + ["+2", "skip"]:
                 for i in range(2):
                     cards.append(Card(number=n, symbol=color))
+        for i in range(4):
+            cards.append(Card(symbol="rainbow", number="0"))
+            cards.append(Card(symbol="rainbow", number="+4"))
         return cards
 
     def setup(self):
@@ -40,7 +44,7 @@ class Game(BaseGame):
 
     def check_gamestate(self, game):
         """triggered after each player"""
-        if len(game.draw_pile) == 0:
+        if len(game.draw_pile) < 5:
             game.draw_pile.cards = Game.generate_cards()
             game.draw_pile.shuffle()
         return game

@@ -1,6 +1,9 @@
 
 import random
 
+class EmptyStackError(Exception):
+    pass
+
 class CardStack:
 
     def __init__(self, name=None, cards=None):
@@ -19,6 +22,9 @@ class CardStack:
 
     def __getitem__(self, i):
         return self.cards[len(self)-1-i]
+
+    def __iter__(self):
+        return iter(self.cards)
 
     def set_acceptance_rule(self, func):
         """
@@ -54,7 +60,10 @@ class CardStack:
         return self.cards[-1] if len(self.cards) > 0 else None
 
     def pop(self):
-        return self.cards.pop(-1)
+        try:
+            return self.cards.pop(-1)
+        except IndexError:
+            raise EmptyStackError("no more cards")
 
     def shuffle(self):
         random.shuffle(self.cards)
