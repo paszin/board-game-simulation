@@ -10,6 +10,8 @@ class GameState:
         for key, value in kwargs.items():
             setattr(self, key, value)
 
+
+
     # TODO: move to Game
     @property
     def min_card_count(self):

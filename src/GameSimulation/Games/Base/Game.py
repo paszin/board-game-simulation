@@ -26,6 +26,7 @@ class Game:
         self.score = None
         self.gamestate_history = []
         self.turn = 0
+        self.exception_handlers = {}
 
     def setup(self):
         """
@@ -56,7 +57,6 @@ class Game:
                       self.gamestate.card_stacks or self.gamestate.stack  # open cards (stack/stacks)
                       )
             self.gamestate, current_player = self.get_next_player(self.gamestate)
-            self.turn += 1
             try:
                 self.gamestate, choice = current_player.play(self.gamestate)
             except RuntimeError as err:
@@ -68,33 +68,26 @@ class Game:
                           self.gamestate.card_stacks or self.gamestate.stack, "\n"  # open cards (stack/stacks)
                           )
                 break
+            except Exception as err:
+                # check ig exception handler exists, if yes run the handler and uodate the gamestate
+                found = False
+                for exc, handler in self.exception_handlers.items():
+                    if type(err) == exc:
+                        found = True
+                        self.gamestate = handler(self.gamestate)
+                if not found:
+                    print(self.gamestate)
+                    print(err)
+                    raise err
             else:
                 if not quiet:
                     print(f"Player {current_player.name}: {choice}\n")
                 self.gamestate = current_player.finish_turn(self.gamestate)
                 self.gamestate_history.append(copy.deepcopy(self.gamestate))
-            self.gamestate = self.check_gamestate(self.gamestate)
+                self.turn += 1
+            # self.gamestate = self.check_gamestate(self.gamestate)
             if turns and self.turn >= turns:
                 break
-        self.finish()
-
-    def simulate_concept(self):
-        """
-        Play the game
-        """
-        turn = 0
-        while True:
-            turn += 1
-            current_player = self.players[turn % len(self.players)]
-            try:
-                self.gamestate, choice = current_player.play(self.gamestate)
-            except RuntimeError as err:
-                # game over
-                self.gamestate_history.append(self.gamestate)
-                break
-            else:
-                self.gamestate = current_player.finish_turn(self.gamestate)
-                self.gamestate_history.append(copy.deepcopy(self.gamestate))
         self.finish()
 
 
@@ -103,3 +96,10 @@ class Game:
 
     def finish(self):
         pass
+
+    def set_error_handler(self, exc, handler):
+            """
+
+            :return:
+            """
+            self.exception_handlers[exc] = handler

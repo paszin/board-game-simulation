@@ -1,112 +1,106 @@
 %!TEX root=../report.tex
 
-\section{Application Examples}
+\section{Example: Model Card Games as Discrete-Event Simulation}
 
 
+I focus on card games as examples. The focus on card games is due to the wide range of different types of board games. Board games, in general, are too diverse in terms of materials (game board, cards, meeples) and rules. In contrast to that, most card games share the same game elements. To be even more specific, the implementation mainly addresses shedding games, like \textit{UNO}, \textit{The Great Dalmuti} and \textit{Phase 10} \cite{wiki:sheddinglist}. They have at least one discard pile, where all players contribute to. They have a hand for each player and optionally a shared or not shared open played cards. And optionally they have a draw pile. Cards consist of color or a symbol, a number, and maybe a special rule is attached to them.
+The game rules of card games are that all players take their turn one after the other. There is no concurrency. This excludes some card games that aim for competing in reaction time, but this is not the scope of this implementation.
 
-I focus on card games as examples. Most card games share the same game elements. The decision to build a framework from scratch was derived from the specific conditions that card games have.
-In the next section I will explain my implementation, followed by a concrete implementation of the card game Uno.
+The decision to build a framework from scratch was derived from the specific conditions that card games have.
+In the next section, I will explain my implementation, followed by a concrete implementation of the card game Uno.
 
-\subsection{Implementation of a Framework for Card Games}
+The objective of the implementation is to build a framework that
 
-They have at least one discard pile, where all players contribute to. They have a hand for each player. And optionally they have a draw pile. Cards consist of a color or symbol, a number and maybe a special rule is attached to them.
-The concept of card games is that all players make their turn after each other. There is no occurrancy. This excludes some card games that aim for competing in reaction time, but this is not the scope of this report. 
+\begin{itemize}
+\item map all main components of discrete-event simulation to the context of card games
+\item uses an object-oriented approach for intuitive readability
+\item is generic enough to cover common card games
+\item keeps the implementation effort low for new player behavior and new games
+\end{itemize}
 
 
+\subsection{Data Structures}
 
-The objective of the implementation is to build a framework that 
+\note{add class diagram}
 
-- includes all main components of a discrete-event simulation
-- uses an object oriented approach for intuitive readability
-- is generic enough to cover common card games
-- reduces the number of files that must be touched for running a simulation
-
-\subsubsection{Data Structures}
-
-All card stacks are implemented with the datastructure of stacks. In computer science a stack is a collection of data in which data can be inserted or deleted only at the top of the stack. \cite{patel2018data} (page 86)
-Stacks implement the functions of push (add data at top) and pop (delete data at top)
+All card stacks are implemented with the data structure of stacks. In computer science, a stack is a collection of data in which data can be inserted or deleted only at the top of the stack. \cite[page 86]{patel2018data}
+Stacks implement the functions of push (add data at the top) and pop (delete data at the top).
 
 Cards are the main data objects. They have the read only attributes \textit{color} and \textit{number} along with one writeable attribute \textit{valid}.
-The Attribute \textit{valid} is used to save the information if the effect of the card was already applied. 
+The Attribute \textit{valid} is used to save the information if the effect of the card was already applied.
 
-\subsubsection{Simulation Logic}
+\note{Gamestate follows flux pattern}
 
-There are some main components that a discrete event simulation requires. I will explain how I implemented the components in my card game framework. 
+\subsection{Simulation Logic}
 
+\note{add pseudocode}
 
-The System State. This captures all variables that characterize the simulation. In my case the system state consists of the number of the current turn, the discard piles, the draw pile and the hand of the players.
+There are some main components that a discrete event simulation requires.
+This follows up on the components introduced in \ref{des:components}. I will explain how I implemented the components in my card game framework.
+The overall execution logic of the simulations follows the concepts of next-event simulation \ref{des:nextevent}
 
-The Simulation Clock. This is a tool that tracks the elapsed time. For card games the simulation clock is a counter of the turns. It gets incremented everytime a player starts its turn. The initial value is 0.
-%The simulation clock is my turn counter. For the simulation clock I chose a fixed - increment advance. It initializes at time zero and then advances at fixed time increments. In my case it’s always one. 
-%Normally this is uncommon. next - event time - advance is most prevelant. This increments the simulation clock depending on the arrival time of new events. But in my case it doesn’t make a difference. 
+\begin{description}
+\item[System State] This captures all variables that characterize the simulation. In my case, the system state consists of the number of the current turn, the discard piles, the draw pile and the hand of the players.
 
+\item[Simulation Clock] This is a tool that tracks the elapsed time. For card games, the simulation clock is a counter of the turns. It gets incremented every time a player starts its turn. The initial value is zero. The simulation clock uses a fixed-increment advance. The turn-counter always increments by one and no interruptions (events triggered by players that don't have a turn) are possible. As interruptions are uncommon for card games, the simulation clock acts similar to a next-event time-advance, because the turn counter only increments, if the next player has a turn.
 
-Next - Event List. This is a queue of the upcoming events. For games, events are equal to making a turn. In my implementation the next event is defined by function that returns the next player. The choice which player comes next depends on the current system state.
+\item[Next-Event List] This is a queue of the upcoming events. For games, events are equal to making a turn. In my implementation, the next event is defined by a function that returns the next player. The choice of which player comes next depends on the current system state.
 
-Statistical Counter or Accumulator. This is a tool records the evolution of the system state. My implementation saves a copy of the current system state after each turn.
+\item[Statistical Counter or Accumulator] This is a tool that records the evolution of the system state. My implementation saves a copy of the current system state after each turn. From this list of game states, a specific development of one variable can be derived.
+
+\end{description}
 
 %
 %The initialization program is the setup method of the game class.
 %
 %
-%The event subprogram is in the simulate function of the game class. In pseudo code the simulate functions runs in a loop till the game is finished. And we call the player.play function that modifies the current game state. This function contains all the logic to play the game. In my implementation it’s pick a card with the same color or same number otherwise take a card from the draw pile. 
+%The event subprogram is in the simulate function of the game class. In pseudo-code the simulate function runs in a loop till the game is finished. And we call the player.play function that modifies the current game state. This function contains all the logic to play the game. In my implementation it’s pick a card with the same color or same number otherwise take a card from the draw pile.
 %
 %The event subprogram is in the simulate function of the game class. In pseudo code the simulate functions runs in a loop till the game is finished. And we call the player.play function that modifies the current game state. This function contains all the logic to play the game. In my implementation it’s pick a card with the same color or same number otherwise take a card from the draw pile
-%. 
+%.
 
-
-(5) Initialization Subprogram. A protocol utilized in the initialization of
-the simulation, usually setting the start time to zero.
-(6) Timing Subprogram. A protocol that, drawing from a next - event list,
-sets the next event and progresses the simulation clock to the moment
-when an event is to happen.
-(7) Event Subprogram. A protocol that launches a routine that updates
-the state of the system with the occurrence of each event.
-(8) Library Subprogram. A protocol used to produce random observa-
-tions drawn generally from predetermined probability distributions.
-(9) Report Generator. A tool that calculates and reports statistics that
-describe the performance of the system.
-(10) Main Program. A routine that coordinates the concert of subordinate
-routines, executing these in the correct sequence. It initializes the
-timing subprogram that determines the subsequent event, passes
-control to the related event subprogram, and updates the system state.
-This routine verifi es for termination and triggers the report generator
-once the simulation ends.
-
-
-  
+%
+%(5) Initialization Subprogram. A protocol utilized in the initialization of
+%the simulation, usually setting the start time to zero.
+%(6) Timing Subprogram. A protocol that, drawing from a next - event list,
+%sets the next event and progresses the simulation clock to the moment
+%when an event is to happen.
+%(7) Event Subprogram. A protocol that launches a routine that updates
+%the state of the system with the occurrence of each event.
+%(8) Library Subprogram. A protocol used to produce random observa-
+%tions drawn generally from predetermined probability distributions.
+%(9) Report Generator. A tool that calculates and reports statistics that
+%describe the performance of the system.
+%(10) Main Program. A routine that coordinates the concert of subordinate
+%routines, executing these in the correct sequence. It initializes the
+%timing subprogram that determines the subsequent event, passes
+%control to the related event subprogram, and updates the system state.
+%This routine verifi es for termination and triggers the report generator
+%once the simulation ends.
 
 
 
+\subsection{Implementation of Uno}
 
-\subsection{Implementation of Simplified Uno}
+As a first example, I will introduce \uno. In \uno, every player gets seven cards. The rest of the cards are placed face down on a draw pile. Next to the pile is a discard pile. The top card should be placed on the discard pile and the game begins. The players make their turns one after each other. A player could either put a card on the discard pile if it matches the last card or draws a card until the one player has no more cards. Some special cards could have an effect on how the game evolves. Janssen derived eleven rule variations for \uno\ by comparing it to \textit{Crazy Eights} for his studies. \cite{janssen2010evolution}
 
-As a first example I will introduce Uno. In Uno every player gets seven cards. [TODO: explain UNO rules)
-% The rest of the cards are placed face down on a draw pile. Next to the pile there should be a place for a discard pile. The top card should be placed on the discard pile and the game begins!
+At first, I implement a simplified version of \uno. My \textit{simplified UNO}  drops all special cards. The idea of the modification is that this is still a good abstraction to simulate the flow of Uno. Furthermore, observations of this version of the game can be used as an indicator whether there is a need for special cards that make the game more difficult or easier. Special cards could be added sequentially to measure the impact of a new card. Without special cards, the card deck consists of the cards one to nine, two times in four different colors.
 
-% Course of the game: The first player is usually the player to the left of the dealer (you can also choose the youngest player), and the game usually runs clockwise. Each player looks at their cards and tries to match the card in the discard pile.
+To extend the framework I have to implement derived classes from the Game-class and the Player-class. The new Game-class must implement the setup function and the new Player-class must implement the play-method.
 
-My simplified Uno drops all special cards. The idea of the modification is that this is still a good abstraction to simulate the flow of Uno. Furthermore, oberservations of this version of the game can be used as an indicator wheter there is a need for special cards that make the game more diffucult or easier. 
-Without special cards the card deck consists of the cards one to nine, two times in four different colors. 
+The implementation of the setup-function must start with the generation of the card deck. This is done by nested for-loops over the colors and numbers of the deck. The last step is setting the game state. Inbetween the setup-function follows the game instruction of \uno. To extend this, special cards can be added to the card deck.
 
-The implementation of the setup-function must start with the generation of the card deck. This is done by nested for-loops over the colors and numbers of the deck.  The last step is setting the game state.  Inbetween the setup-function of follows the game instruction of Uno. 
+The player behavior is implemented as choosing the first card that could be put on discard pile. The first card means the card that holds the player for the longest time. This results in a deterministic turn. For an advanced version the player behavior follows these steps:
 
-The player behavior is implemented as choose the first card that could be put on discard pile. First card means the card which hold the player for the longest time. This results in a deterministic turn.
+\begin{itemize}
+\item[1.] Check if the last card on the discard pile expects any special considerations.
+\item[2.] Filter all cards that could be put on the discard pile.
+\item[3.] Rate the cards. Special cards get a higher rating.
+\item[4.] Chose the card with the lowest rating.
+\end{itemize}
 
-
-\subsection{Implementation of Official Uno}
-
-Extending the implementation for real uno does not implie modification to the framework. Only the card deck and the player behavioir must be modified.
-
-
-
-Modification of the player behavioir:
+The intention of the player behavior is to avoid playing wild cards without the need to change the color and to keep other special cards for the end game. This player behavior is derived from personal observations. Different player types could be implemented that play special cards more aggressively. Also, interactive player types are possible. The play-method could depend on the input by a user.
 
 
-1. Check if the last card on the discard pile expects any special considerations.
-2. Filter all cards that could be put on the discard pile.
-3. Rate the cards. Special cards get a higher rating
-4. Chose the card with the lowest rating.
 
-The intention of the player behavioir is to avoid playing rainbow cards without the need to change the color and to keep other special cards for the end game. This player behavior is derived from personal observations. Different player types could be implemented that play the special cards more aggresivly.
 

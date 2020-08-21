@@ -1,8 +1,10 @@
-
+import copy
 import random
+
 
 class EmptyStackError(Exception):
     pass
+
 
 class CardStack:
 
@@ -21,7 +23,7 @@ class CardStack:
         return len(self.cards)
 
     def __getitem__(self, i):
-        return self.cards[len(self)-1-i]
+        return self.cards[len(self) - 1 - i]
 
     def __iter__(self):
         return iter(self.cards)
@@ -67,3 +69,9 @@ class CardStack:
 
     def shuffle(self):
         random.shuffle(self.cards)
+
+    def copy_cards(self):
+        return copy.deepcopy(self.cards)
+
+    def add_cards(self, cards):
+        self.cards = [] + cards + self.cards
