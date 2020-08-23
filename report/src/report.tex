@@ -1,0 +1,49 @@
+\documentclass[10]{article}
+\usepackage{preamble}
+
+\title{Foundations of Discrete-Event Simulation \\ \footnotesize{Theoretical and practical aspects using the example of card games}}
+
+\author{Pascal Crenzin}
+\date{21.08.2020}
+
+\begin{document}
+	\maketitle
+	\begin{abstract}
+	This report introduces discrete-event simulations and classifies the purpose of discrete-event simulation based on its characteristics. Discrete-event simulations are stochastic, dynamic and based on discrete events. Every simulation is based on a model. A generic model of discrete-event simulation is the queuing of arriving events, followed by the processing of the events. Every event changes the system state. An application of using discrete-event simulation to analyze and balance card games is demonstrated with the example of \uno. The presented approach realizes the main components and the simulation paradigm in a custom implementation of a framework for the simulation of card games. The simulation of \uno\ analyzes the duration of \uno\ games depending on the presence of special cards, number of players and number of initial hand cards. The result is, that a \uno\ game takes normally 10 to 30 rounds to finish.
+	\end{abstract}
+	\newpage
+	\tableofcontents
+	\newpage
+  \input{sections/introduction}
+  \input{sections/foundations}
+  	\input{sections/application-example}
+	\input{sections/pr-experiments.tex}
+	\input{sections/discussion}
+	\input{sections/conclusion}
+
+\newpage
+% \bibliographystyle{chicago}
+\bibliographystyle{plain}
+\bibliography{bib}
+
+
+\end{document}
+
+
+
+
+% Questions:
+
+% Code, Github. relevance?
+
+
+
+% TODOS:
+
+
+% add pages or chapters to citations
+
+% introduction
+
+% clean up github
+

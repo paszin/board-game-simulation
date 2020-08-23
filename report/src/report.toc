@@ -1,0 +1,29 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Foundations}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Terminology}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}System}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Event}{4}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Model}{4}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}Classification of Simulations}{5}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Static \& Dynamic}{5}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Continuous \& Discrete}{5}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Fidelity, Resolution \& Scale}{5}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Games, Simulation Games \& Simulators}{6}{subsubsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.3}Discrete-Event Simulation}{7}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Components}{8}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Trace-Driven Discrete-Event Simulation}{8}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Next-Event Simulation}{8}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Time-Advance Mechanism}{9}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Modelling \& Simulation Cycle}{9}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Example: Model Card Games as Discrete-Event Simulation}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Data Structures}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Simulation Logic}{11}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Implementation of Uno}{11}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Experiments and Evaluation}{13}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Impact of Special Cards}{13}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Impact of Game Parameters}{14}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Discussion}{15}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Verification and Validation of the \textit {UNO}\ simulation}{15}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Insights from the simulation}{16}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Extensebility of the framework}{17}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Conclusion}{17}{section.6}%

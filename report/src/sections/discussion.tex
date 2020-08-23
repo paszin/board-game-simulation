@@ -1,0 +1,52 @@
+%!TEX root=../report.tex
+
+% grammarly checked
+
+\section{Discussion}
+
+To summarize the experiments, \uno\ seems to be well-balanced. In order to make this statement, the results must be analyzed. But not just the results, also the model itself. I will do this in the next paragraph and then analyze the results. Lastly, I would like to give an outlook on extensibility for other card games.
+
+
+\subsection{Verification and Validation of the \uno\ simulation}
+
+The question regarding verification and validation is the question if the is model built correctly and was it the correct model?
+Verification can be simply proven for game simulations. A certain game state can only be transformed into a new game state according to the rules. The set of possible new game states is finite. For example, the discard pile shows a red five and the current player does not have any cards that match, then the player must have one more card in hand after his turn. This can be simply observed by checking the game state. Coming up with scenarios, that cover edge cases is a common best practice. For \uno\ one of these edge cases could be multiple \textit{plus2} cards on the discard pile and less than two cards on the draw pile.
+
+Validation asks to make a statement regarding reality, representation, and requirements. \cite[page 13]{sokolowski2010modelingintro} The statements are subjective, but they should be convincing.
+
+\begin{description}
+\item[Reality] means how closely does the model matches reality. The players in the game are simulated with very simple and equal behavior.  This won't be the case in the real world, but nonetheless, as \uno\ is a simple game with no sophisticated tactics the implemented behavior matches the player behavior of humans. Mistakes (e.g. forget to say \textit{"uno"} when just one hand card remains) are not considered.
+
+\item[Representation] means that some aspects are represented, some are not. I covered the basic concept. This doesn't include a graphic representation of the game.
+
+\item [Requirements] means that different levels of fidelity are required for different applications. The requirement of the \uno\ model was to analyze the game duration. It was broken down into the number of rounds. Duration could also include thinking time, but this was not the intention of the model, thus no requirement.
+
+\end{description}
+
+Another relevant aspect of simulations is the number of overall simulations. Drawing conclusions after one simulation could lead to misinterpretations. Therefore I picked the scenario of three players with seven hand cards as a reference and analyzed the evolution of the mean and the standard deviation. After 1000 simulated games the mean and the standard deviation converge. The \textit{means} remain between 12.17 and 12.31 rounds per game and the \textit{standard deviation} remains between 5.96 and 6.2. I consider these variations as irrelevant for my question, thus I decided to run 1000 simulations per configuration.
+
+
+\subsection{Insights from the simulation}
+
+The frequency of special cards can be used to shorten or to extend the game. \textit{Wildcards} shorten the game and \textit{plus2} cards extend the game.
+
+Regarding the ratio of the number of players to the number of cards, figure \ref{fig:boxplot-all-parameters} reveals with an increase of players the number of rounds of the games decreases. Considering the fact that a round has more turns with more players, this effect is desirable. My target number of rounds of 15 to 30 rounds is not reached. Most games tend to be shorter. Maybe my assumption of a minimum of 15 rounds was too high. The limit of 30 rounds is only beaten by a few simulations. With seven hand cards, more than 95\% of the games end before 30 rounds for three or more players.
+Scenarios with only two players seem to stand out. Some games end with more than 100 rounds. Also, the balancing who wins of the two players is unequal. In simulations with two players and seven hand cards, the starting player wins 75\% of the games. For no other number of players I could observe such a big difference.
+Based on this data, I would argue that seven cards per player independent from the number of players is a good rule, but for two players it needs some modification of the rules.
+
+\subsection{Extensibility of the framework}
+
+I consider two directions of extensions.
+The extensibility of the simulation with different player types is straight forward. In the initialization phase of the game, a list of player objects is passed to the game constructor. The filter functionality of playable cards can be implemented outside the player object. A demo of a player type based on human input is part of the code repository.
+
+
+The extensibility regarding other card games may require some modifications. The current restriction is, that all players contribute to the same piles. But within these restrictions are many other games. An implementation that is part of the published code is an implementation of \textit{The Game}. \textit{The Game} is a cooperative game with the goal to put all hand cards on four discard piles. The final result is the sum of cards that are not on the discard piles. An interesting factor is the communication between the players. The communication is implemented by checking the hand cards of the other players. This allows also to define levels of allowed interactions. During the implementation, I noticed that sophisticated tactical moves are difficult to cover in an algorithm. A better approach for the future would be to learn the behavior of human players.
+
+
+
+
+
+
+
+
+

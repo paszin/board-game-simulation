@@ -2,9 +2,6 @@
 
 \section{Foundations}
 
-
-Simulations are a \textit{problem-based discipline that allows for repeated testing of a hypothesis.} \cite{sokolowski2010modelingintro} This statement covers two important aspects of simulations in general. The first key element in this statement is \textit{“problem-based”}. This means a simulation always addresses a question. The second key element is \textit{“repeated testing”}. This means a simulation is intended to run multiple times.
-
 The general approach to simulate something is to build a model as an abstraction of a system in the real world and then modify and observe the model according to the hypothesis that needs to be tested. The last step is to draw a conclusion out of the observations.
 
 \subsection{Terminology}
@@ -13,10 +10,11 @@ System and model are widely used. To clarify their meaning in this report I expl
 
 \subsubsection{System}
 
-A model is intended to represent a system in the real world. Therefore the abstract term \textit{system} must be defined. In the scope of this report, a system is a collection of different elements that influence the simulation. This includes among other people, hardware, software, institutions, documents, and environmental factors. A system can be physically present in the real world, but it could also be a plan or concept for something that does not exist.
+A model is intended to represent a system in the real world. Therefore the abstract term \textit{system} must be defined. In the scope of this report, a system is a collection of different elements that influence the simulation. This includes among other people, hardware, software, institutions, documents, and environmental factors. A system has a state which is a representation of the current situation. A system can be physically present in the real world, but it could also be a plan or concept for something that does not yet exist.
 
-\subsection{Event}
-\note{Something that my occur}
+\subsubsection{Event}
+An event is an occurance that impacts the the state of the system \cite[page 187]{leemis2006discrete}. An event could may change the state of the system, but it doesn't have to necesserially. 
+By definition, the state of the system can only change at an event time. Each event has an associated event type.
 
 \subsubsection{Model}
 
@@ -24,7 +22,7 @@ The concept \textit{model} is a physical, mathematical, or otherwise logical
 representation of a system. Models serve as representations of events and things. The events can be real, e.g. from an observation of the real world, or contrived. A model represents a system.
 While a system could be dangerous to observe or even don't exist, a model could be used to study the evolution of a system. When investigating a system, a quantitative assessment is derived. This may include how the system performs with various inputs and in different environments.
 Different scenarios (occurrence of specific events) can be investigated.  It is important to get a quantitative evaluation of the performance of the system. The performance could cover multiple aspects, which depend on the purpose of the model.
-A model exists at three levels of abstraction: conceptual, specification, and computational. \cite[chapter 1]{leemis2006discrete} A conceptual model abstracts the general concept while a specification model contains concrete information. A computational model refers to an implemented program of a model, which means that the computational model is nothing else than a simulation. In this report computational model and simulation are equivalent. The classifications for simulations are also classifications of models.
+A model exists at three levels of abstraction: conceptual, specification, and computational \cite[chapter 1]{leemis2006discrete}. A conceptual model abstracts the general concept while a specification model contains concrete information. A computational model refers to an implemented program of a model, which means that the computational model is nothing else than a simulation. In this report computational model and simulation are equivalent. The classifications for simulations are also classifications of models.
 
 In the following, I will go into more detail regarding different types of simulations, followed by a detailed explanation of discrete-event simulation, and lastly, introduce the cycle of modeling \& simulation.
 
@@ -37,10 +35,10 @@ Simulations in general can be classified depending on multiple aspects. In this 
 \subsubsection{Static \& Dynamic}
 
 A system model is static or dynamic. A static model is one in which time
-is not a significant variable. A dynamic model evolves over time. \cite{leemis2006discrete} \note{(chapter 1)}
+is not a significant variable. A dynamic model evolves over time \cite[chapter 1]{leemis2006discrete}.
 
 Static models can answer the question of how much money gets distributed if \textit{N} people play the lottery next week. The result is completely independent of the timing of the players.
-To solve such questions, there is the Monte Carlo simulation, that relies on repeated random sampling to obtain numerical results. Another use case for Mone-Carlo simulations is finding the area under a curve. \cite{ohriner1971finding}
+To solve such questions, there is the Monte Carlo simulation, that relies on repeated random sampling to obtain numerical results. Another use case for Monte Carlo simulations is finding the area under a curve \cite{ohriner1971finding}. In the context of board games, a Monte Carlo simulation could be used to determine how frequently fields are visited on a game board. 
 
 If the system evolves over time it is a so-called dynamic model. A dynamic model would emerge if the lottery example gets extended by players that play week for week. Their spendings on the lottery could depend on their last result.
 
@@ -54,32 +52,35 @@ The next section focuses on discrete-event simulation in more detail.
 
 \begin{figure}[h!]
  \caption{Chosing the right simulation paradigm depending on the model requirements (adopted from \cite[page 3]{leemis2006discrete})}
- \includegraphics[width=0.9\textwidth]{static-dynamic-classification}
+ \centering
+ \includegraphics[width=0.8\textwidth]{static-dynamic-classification}
 \end{figure}
 
 
 \subsubsection{Fidelity, Resolution \& Scale}
 
 There are three primary attributes that can be mapped to models or simulations.
-These are fidelity, resolution, and scale. \cite{sokolowski2010modelingintro}
+These are fidelity, resolution, and scale \cite{sokolowski2010modelingintro}.
 
-\textbf{Fidelity} indicates how close a simulation matches reality. A model that closely behaves like a real system has high fidelity. High fidelity means that every aspect of the system must be covered. Normally models aim to describe only the parts that are necessary for the initial hypothesis. Aiming for a high fidelity would mean a great effort. It should only be done if the hypothesis requires a high fidelity of the simulation.
+\begin{description}
 
+\item[Fidelity] indicates how close a simulation matches reality. A model that closely behaves like a real system has high fidelity. High fidelity means that every aspect of the system must be covered. Normally models aim to describe only the parts that are necessary for the initial hypothesis. Aiming for a high fidelity would mean a great effort. It should only be done if the hypothesis requires a high fidelity of the simulation.
 
-\textbf{Resolution} describes the level of details. The more detail included in the simulation, the
+\item[Resolution] describes the level of details. The more detail included in the simulation, the
 higher the resolution. To illustrate this, a model of a plantation could be broken down into models of all single plants. Modeling all plants would achieve a higher resolution. The target resolution depends on the intention of the model. Referring to the plantation example, a model that should describe harvesting around the globe, would better use a low resolution, namely models of plantations, while a model to optimize the crop would need a higher resolution.
 
-\textbf{Scale} indicates the overall size of the simulation. A larger system has a higher scale. The scale is a fairly subjective metric. It always depends on the relations. One example is simulating a fabric compared to simulating a single device in a production line.
+\item[Scale] indicates the overall size of the simulation. A larger system has a higher scale. The scale is a fairly subjective metric. It always depends on the relations. One example is simulating a fabric compared to simulating a single device in a production line.
+
+\end{description}
 
 
 \subsubsection{Games, Simulation Games \& Simulators}
 
 
 Nearly every system can be simulated. In this report, I would like to have a deeper look into the field of games. Games play a popular role in the entertainment industry. There is a wide range of games that aim to simulate a system in an interactive way. These can be distinguished whether they aim for fun or for training.
-Games, simulation games, and simulators can be distinguished based on various characteristics. \cite{narayanasamy2006distinguishing} In this scope \textit{games} mainly refers to computer games. But the characteristics also apply for board games.
+Games, simulation games, and simulators can be distinguished based on various characteristics \cite{narayanasamy2006distinguishing}. In this scope \textit{games} mainly refers to computer games. But the characteristics also apply for board games.
 All (computer) games have a simulation part somehow, but one characteristic is that simulation games do not always involve a specific goal-oriented activity within the context of the game. Games and simulation games aim for fun and entertainment. They provide challenges and have typical game patterns. The world can be imaginative or fictitious.
 Simulators are designed for training. Training simulators only provide a real-world environment. They aim for skill-development rather than fun. Challenges in training simulators are challenges with equivalents in the real-world.
-
 
 
 \subsection{Discrete-Event Simulation}
@@ -110,13 +111,18 @@ Reducing delay and wait is a common optimization goal that discrete-event simula
 
 There are some main components that a discrete event simulation requires.
 
-The System State. This captures all variables that characterize the simulation.
+\begin{description}
 
-The Simulation Clock. This is a tool that tracks the elapsed time. Different approaches to increment the simulation clock are explained in \hyperref[des:timeadvance]{\textit{Time-Advance Mechanism}}.
+\item[The System State.] This captures all variables that characterize the simulation.
 
-Next - Event List. This is a queue for the upcoming events.
+\item[The Simulation Clock.] This is a tool that tracks the elapsed time. Different approaches to increment the simulation clock are explained in \hyperref[des:timeadvance]{\textit{Time-Advance Mechanism}}.
 
-Statistical Counter or Accumulator. This is a tool that records the evolution of the system state.
+\item[Next - Event List.] This is a queue for the upcoming events.
+
+\item[Statistical Counter or Accumulator.] This is a tool that records the evolution of the system state.
+
+
+\end{description}
 %
 %The initialization program is the setup method of the game class.
 %
@@ -150,20 +156,22 @@ Statistical Counter or Accumulator. This is a tool that records the evolution of
 \subsubsection{Trace-Driven Discrete-Event Simulation}
 
 The events in a discrete-event simulation can be generated or prerecorded. If the simulation relies on prerecorded data, it is a so-called trace-driven discrete-event simulation.
-By definition, a trace-driven simulation relies on input data from an external source to generate realistic events. \cite{leemis2006discrete} The advantage of trace-driven discrete-event simulations is that no data needs to be generated and the data source reveals realistic data. On the other hand, the reliance on external data limits the capabilities to simulate new scenarios. A common question is "What if \textit{X}" happens. And if \textit{X} not part of the recorded data it is not possible to find out.
+By definition, a trace-driven simulation relies on input data from an external source to generate realistic events. \cite[chapter 1]{leemis2006discrete} The advantage of trace-driven discrete-event simulations is that no data needs to be generated and the data source reveals realistic data. On the other hand, the reliance on external data limits the capabilities to simulate new scenarios. A common question is "What if \textit{X}" happens. And if \textit{X} not part of the recorded data it is not possible to find out.
 
 
 \subsubsection{Next-Event Simulation}
 \label{des:nextevent}
 
-The concept of next-event simulation extends the basic concept of discrete-event simulations. To construct a next-event simulation model, all events must be assignable to an event type. An algorithm decides how the system state changes depending on these event types.
-\cite[chapter 5]{leemis2006discrete}
+The concept of next-event simulation extends the basic concept of discrete-event simulations. To construct a next-event simulation model, all events must be assignable to an event type. An algorithm decides how the system state changes depending on these event types
+\cite[chapter 5]{leemis2006discrete}.
 The algorithm for a next-event simulation is based on four steps.
-\textbf{Initialization.} In this The simulation clock is initialized (usually to zero) and the first events get queued.
-\textbf{Processing the current event.} The queue is scanned to determine the next event. Then the event gets processed the event and the simulation clock advances.
-\textbf{Schedule new events}. New events (if any) that may be spawned by the current event are placed in the queue.
-\textbf{Terminate}. The process of advancing the simulation clock and processing events and scheduling new events continues until some terminal condition is satisfied. The terminal condition can be a specific event that only occurs once. Another terminal condition could be reaching a certain time on the simulation clock.
+\begin{description}
+\item[Initialization:] In this The simulation clock is initialized (usually to zero) and the first events get queued.
+\item[´Processing the current event.] The queue is scanned to determine the next event. Then the event gets processed the event and the simulation clock advances.
+\item[Schedule new events.] New events (if any) that may be spawned by the current event are placed in the queue.
+\item[Terminate.] The process of advancing the simulation clock and processing events and scheduling new events continues until some terminal condition is satisfied. The terminal condition can be a specific event that only occurs once. Another terminal condition could be reaching a certain time on the simulation clock.
 
+\end{description}
 
 \subsubsection{Time-Advance Mechanism}
 \label{des:timeadvance}
@@ -180,15 +188,17 @@ In contrast, the next-event time-advance approach is more versatile. It initiali
 \subsection{Modelling \& Simulation Cycle}
 
 \begin{figure}[h!]
- \caption{Process of generating and evaluating simulations (adopted from \cite[page \note{X}]{sokolowski2010modeling})}
-\includegraphics[width=0.9\textwidth]{simulation-modelling-cycle}
+ \caption{Process of generating and evaluating simulations (adopted from \cite[page 7]{sokolowski2010modeling})}
+ \centering
+\includegraphics[width=0.8\textwidth]{simulation-modelling-cycle}
+\label{fig:ms-cycle}
 \end{figure}
 
 Simulations are based on models and simulations are designed to answer a hypothesis. This means simulations must also be understood as a piece a larger process.
 %The process of modeling and simulation is proposed by \note{Name}.
-It starts with modeling. Modeling includes theories, information, algorithms of the topic. A decision must be taken which type of model and with paradigms are used. A supporting tool for that is the decision tree in \note{figure X}.
-The result of the first phase is a model. The model gets implemented in the next step. There is dedicated software for simulation purposes. \cite{wiki:deslist} The result of this step is an executable program that implements the model.
-During the execution phase, the simulation program generates data. For the execution, the processing environment must be taken into account. Complex simulations may need more computation power than a normal home computer could provide.
+It starts with modeling. Modeling includes theories, information, algorithms of the topic. A decision must be taken which type of model and with paradigms are used. A supporting tool for that is the decision tree in \ref{fig:ms-cycle}.
+The result of the first phase is a model. The model gets implemented in the next step. There is dedicated software for simulation purposes \cite{wiki:deslist}. The result of this step is an executable program that implements the model.
+During the execution phase, the simulation program generates data. For the execution, the processing environment must be taken into account. Complex simulations may need more computation power than a normal home computer could provide. One way to achieve a better performance is to run a distributed simulation \cite{misra1986distributed}.
 The output data must be transformed to get the desired performance insights.
 If the model contains variability and uncertainty, then techniques from probability
 and statistics will likely be required for the analysis. All further analysis must happen regarding the initial hypothesis. A model must be verified and validated. This means to check whether the model was built correctly and whether the model is appropriate compared to the real world.

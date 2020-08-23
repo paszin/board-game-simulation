@@ -1,0 +1,94 @@
+\begin{thebibliography}{10}
+
+\bibitem{sokolowski2010modelingintro}
+Catherine~M. Banks.
+\newblock Discrete-event simulation.
+\newblock In John~A Sokolowski and Catherine~M Banks, editors, {\em Modeling
+  and simulation fundamentals: theoretical underpinnings and practical
+  domains}, chapter~1, pages 1--24. John Wiley \& Sons, 2010.
+
+\bibitem{wiki:sheddinglist}
+{Category:Shedding-type card games}.
+\newblock Category:shedding-type card games --- {W}ikipedia{,} the free
+  encyclopedia, 2019.
+\newblock [Online; accessed 20-August-2020].
+
+\bibitem{gobet2004moves}
+Fernand Gobet, Jean Retschitzki, and Alex de~Voogt.
+\newblock {\em Moves in mind: The psychology of board games}.
+\newblock Psychology Press, 2004.
+
+\bibitem{hom2007automatic}
+Vincent Hom and Joe Marks.
+\newblock Automatic design of balanced board games.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial Intelligence
+  and Interactive Digital Entertainment (AIIDE)}, pages 25--30, 2007.
+
+\bibitem{jacobson2006discrete}
+Sheldon~H Jacobson, Shane~N Hall, and James~R Swisher.
+\newblock Discrete-event simulation of health care systems.
+\newblock In {\em Patient flow: Reducing delay in healthcare delivery}, pages
+  211--252. Springer, 2006.
+
+\bibitem{janssen2010evolution}
+Marco~A Janssen.
+\newblock The evolution of rules in shedding-type of card games.
+\newblock {\em Advances in Complex Systems}, 13(06):741--754, 2010.
+
+\bibitem{jun1999application}
+JB~Jun, Sheldon~H Jacobson, and James~R Swisher.
+\newblock Application of discrete-event simulation in health care clinics: A
+  survey.
+\newblock {\em Journal of the operational research society}, 50(2):109--123,
+  1999.
+
+\bibitem{krenczyk2014production}
+Damian Krenczyk and Malgorzata Olender.
+\newblock Production planning and control using advanced simulation systems.
+\newblock {\em Int. J. Mod. Manuf. Technol}, 6(2):38--43, 2014.
+
+\bibitem{leemis2006discrete}
+Lawrence~M Leemis and Stephen~Keith Park.
+\newblock {\em Discrete-event simulation: A first course}.
+\newblock Pearson Prentice Hall Upper Saddle River, NJ, 2006.
+
+\bibitem{wiki:deslist}
+{List of discrete event simulation software}.
+\newblock List of discrete event simulation software --- {W}ikipedia{,} the
+  free encyclopedia, 2020.
+\newblock [Online; accessed 20-August-2020].
+
+\bibitem{misra1986distributed}
+Jayadev Misra.
+\newblock Distributed discrete-event simulation.
+\newblock {\em ACM Computing Surveys (CSUR)}, 18(1):39--65, 1986.
+
+\bibitem{narayanasamy2006distinguishing}
+Viknashvaran Narayanasamy, Kok~Wai Wong, Chun~Che Fung, and Shri Rai.
+\newblock Distinguishing games and simulation games from simulators.
+\newblock {\em Computers in Entertainment (CIE)}, 4(2):9--es, 2006.
+
+\bibitem{ohriner1971finding}
+Marvin Ohriner.
+\newblock Finding the area under a curve by the monte carlo method.
+\newblock {\em The Physics Teacher}, 9(8):449--450, 1971.
+
+\bibitem{patel2018data}
+Mayank Patel.
+\newblock {\em Data Structure and Algorithm With C}.
+\newblock Educreation Publishing, 2018.
+
+\bibitem{silver2017mastering}
+David Silver, Julian Schrittwieser, Karen Simonyan, Ioannis Antonoglou, Aja
+  Huang, Arthur Guez, Thomas Hubert, Lucas Baker, Matthew Lai, Adrian Bolton,
+  et~al.
+\newblock Mastering the game of go without human knowledge.
+\newblock {\em nature}, 550(7676):354--359, 2017.
+
+\bibitem{sokolowski2010modeling}
+John~A Sokolowski and Catherine~M Banks.
+\newblock {\em Modeling and simulation fundamentals: theoretical underpinnings
+  and practical domains}.
+\newblock John Wiley \& Sons, 2010.
+
+\end{thebibliography}

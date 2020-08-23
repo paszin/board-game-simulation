@@ -1,0 +1,14 @@
+%!TEX root=../report.tex
+
+\section{Conclusion}
+
+This report introduces discrete-event simulations and classifies the purpose of discrete-event simulation based on its characteristics. Discrete-event simulations are stochastic, dynamic, and based on discrete events.
+Every simulation is based on a model. A model can have a high or low fidelity, resolution, and scale. The introduced example of \uno\ has a low fidelity, low resolution, and high scale. A generic model of discrete-event simulation is the queuing of arriving events, followed by the processing of the events. Every event changes the system state. In the implementation of the card game framework, events are the turns of the individual players. The events occur at a fixed time. An event changes the system state. The evolution of the system state is logged. From these system states questions regarding the game evolution, can be answered. One shown example is the duration of \uno\ games. \uno\, which is played with seven hand cards, ends normally after 10-30 rounds. The simulation reveals that some special cards extend, some special cards shorten the game.
+The implemented framework can be used to run a further analysis of \uno\ or other games as well. I can confirm discrete-event simulation can be used to simulate card games.
+
+The Institute of Industrial Engineers published a list of advantages and disadvantages of simulations, that I would like to follow up on \cite{sokolowski2010modelingintro}. One advantage is that simulations enable us to make better decisions because every aspect can be tested. I can confirm this. I was able to look for games that take unexpectedly long and then visualize the game state to identify the bottleneck of the system.
+Another advantage is to understand how a system operates. While implementing rules, I noticed how precise rules must be written down. So as a game developer I would always try to implement a simulation just to confirm that all aspects are covered.
+But there are also disadvantages. Results need an interpretation. At some point, there is some uncertainty if the players are not implemented smart enough or if the game needs a modification.
+
+All in all, discrete-event simulation is a powerful tool to reveal some hidden effects or to validate rules.
+

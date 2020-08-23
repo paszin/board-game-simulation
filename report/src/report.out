@@ -1,0 +1,29 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Foundations}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Terminology}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{System}{subsection.2.1}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Event}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Model}{subsection.2.1}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Classification of Simulations}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Static \046 Dynamic}{subsection.2.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Continuous \046 Discrete}{subsection.2.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Fidelity, Resolution \046 Scale}{subsection.2.2}% 10
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Games, Simulation Games \046 Simulators}{subsection.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.3}{Discrete-Event Simulation}{section.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Components}{subsection.2.3}% 13
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Trace-Driven Discrete-Event Simulation}{subsection.2.3}% 14
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Next-Event Simulation}{subsection.2.3}% 15
+\BOOKMARK [3][-]{subsubsection.2.3.4}{Time-Advance Mechanism}{subsection.2.3}% 16
+\BOOKMARK [2][-]{subsection.2.4}{Modelling \046 Simulation Cycle}{section.2}% 17
+\BOOKMARK [1][-]{section.3}{Example: Model Card Games as Discrete-Event Simulation}{}% 18
+\BOOKMARK [2][-]{subsection.3.1}{Data Structures}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.2}{Simulation Logic}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.3}{Implementation of Uno}{section.3}% 21
+\BOOKMARK [1][-]{section.4}{Experiments and Evaluation}{}% 22
+\BOOKMARK [2][-]{subsection.4.1}{Impact of Special Cards}{section.4}% 23
+\BOOKMARK [2][-]{subsection.4.2}{Impact of Game Parameters}{section.4}% 24
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 25
+\BOOKMARK [2][-]{subsection.5.1}{Verification and Validation of the UNO simulation}{section.5}% 26
+\BOOKMARK [2][-]{subsection.5.2}{Insights from the simulation}{section.5}% 27
+\BOOKMARK [2][-]{subsection.5.3}{Extensebility of the framework}{section.5}% 28
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 29
