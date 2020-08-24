@@ -15,7 +15,7 @@ Content of the folders:
 
 **caga-sim** contains the card-game simulation framework as package.
 
-**notebooks** contains experiments with UNO
+**experiments** contains experiments with UNO
 
 
 ## About caga-sim
@@ -37,8 +37,11 @@ class EasyUno(Game):
     def setup():
         
 
+        
+
 
 ```
+
 
 
 ## Getting started
@@ -46,6 +49,9 @@ class EasyUno(Game):
 
 
 ## Experiments
+
+* Simulate Uno: This contains a an example with logging output and the execution of 1000 games of different configurations.
+
 
 
 
