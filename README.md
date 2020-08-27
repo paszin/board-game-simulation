@@ -66,7 +66,7 @@ game.simulate(quiet=False)
 
 * Uno: Impact Of Special Cards: This analyzes the impact of wildcard, plus2 and other special cards on the duration of the game [Link to jupyter notebook](https://github.com/paszin/card-game-simulation/blob/master/experiments/executed/UnoImpactOfSpecialCards.ipynb)
 
-* Uno: 
+* Uno: Analyze the duration of the game [Link to jupyter notebook](https://github.com/paszin/card-game-simulation/blob/master/experiments/executed/AnalyzeUno.ipynb) 
 
 Ideas for other studies:
 

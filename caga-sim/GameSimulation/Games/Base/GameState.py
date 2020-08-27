@@ -7,9 +7,23 @@ class GameState:
         self.stack = stack
         self.card_stacks = card_stacks
         self.draw_pile = draw_pile
+        self._attributes = []
         for key, value in kwargs.items():
             setattr(self, key, value)
+            self._attributes.append(key)
 
+    def print_it_nice(self):
+        """
+        prints out a ice representation of the current Gamestate
+        """
+        print("GAMESTATE")
+        if self.stack: print(f"Discard Pile:\t {self.stack.last_card} (height: {len(self.stack)})")
+        if self.draw_pile: print(f"Draw Pile: \t {len(self.draw_pile)} cards")
+        for a in self._attributes:
+            try:
+                print(f"{a}: {getattr(self, a)}")
+            except:
+                print(f"{a}: Value can not be displayed")
 
 
     # TODO: move to Game
